@@ -11,11 +11,16 @@ function shortenUrl() {
     fetch(apiUrl).then(response => response.text()).then(data => {
         shortenedUrlTextarea.value = data;
         if(shortenedUrlTextarea.value === "Error"){
-            shortenedUrlTextarea.value = "Error : Unable to shorten URL!";
+            errorHandler();
         }
     }).catch(error => {
-        shortenedUrlTextarea.value = "Error : Unable to shorten URL!";
+        errorHandler();
     });
+}
+
+function errorHandler() {
+    alert("Error : Unable to shorten URL!");
+    location.reload();
 }
 
 reloadBtn.addEventListener('click', () => {
